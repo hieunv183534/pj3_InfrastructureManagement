@@ -1,0 +1,15 @@
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\bin\Debug\net6.0\InfrastructureManagement.Infrastructure.deps.json
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\bin\Debug\net6.0\InfrastructureManagement.Infrastructure.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\bin\Debug\net6.0\ref\InfrastructureManagement.Infrastructure.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\bin\Debug\net6.0\InfrastructureManagement.Infrastructure.pdb
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\bin\Debug\net6.0\InfrastructureManagement.Core.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\bin\Debug\net6.0\InfrastructureManagement.Core.pdb
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.AssemblyInfo.cs
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.csproj.CopyComplete
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\ref\InfrastructureManagement.Infrastructure.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Infrastructure\obj\Debug\net6.0\InfrastructureManagement.Infrastructure.pdb

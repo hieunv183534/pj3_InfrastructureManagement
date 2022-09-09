@@ -1,0 +1,12 @@
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\bin\Debug\net6.0\InfrastructureManagement.Core.deps.json
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\bin\Debug\net6.0\InfrastructureManagement.Core.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\bin\Debug\net6.0\ref\InfrastructureManagement.Core.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\bin\Debug\net6.0\InfrastructureManagement.Core.pdb
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.csproj.AssemblyReference.cache
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.AssemblyInfoInputs.cache
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.AssemblyInfo.cs
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.csproj.CoreCompileInputs.cache
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\ref\InfrastructureManagement.Core.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Core\obj\Debug\net6.0\InfrastructureManagement.Core.pdb

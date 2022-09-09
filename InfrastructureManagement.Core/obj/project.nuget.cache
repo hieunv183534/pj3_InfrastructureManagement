@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FpBjoqAsMKuilX7+ChgCEz8feodR56Vim0kR2SNM574bXy8gUSCx8hsuILvLMdkDxkJlIh3pXPteMDcwbHrR6w==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hi\\Desktop\\pj3\\InfrastructureManagement.Api\\InfrastructureManagement.Core\\InfrastructureManagement.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hi\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "inCrnZfzCtkOdaC1GJtzmBknTXZzf9LW5UisYZPbNGw=",
+  "Source": "InfrastructureManagement.Api",
+  "BasePath": "_content/InfrastructureManagement.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
