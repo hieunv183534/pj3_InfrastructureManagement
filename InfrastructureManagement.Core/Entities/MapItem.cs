@@ -13,12 +13,12 @@ namespace InfrastructureManagement.Core.Entities
         public Guid ItemId { get; set; }
 
         [ForeignKey("ItemId")]
-        public Item Item { get; set; }
+        public Item? Item { get; set; }
 
         public Guid ParentId { get; set; }
 
         [ForeignKey("ParentId")]
-        public Item Parent { get; set; }
+        public Item? Parent { get; set; }
 
         public bool IsFixed { get; set; }
 

@@ -20,6 +20,110 @@ namespace InfrastructureManagement.Core.Services
             _itemRepository = itemRepository;
         }
 
+        public ServiceResult GetChildAPartOfs(Guid itemId, int index, int count, string filter, string categoryCode)
+        {
+            try
+            {
+                var result = _itemRepository.GetChildAPartOfs(itemId, index, count, String.IsNullOrEmpty(filter) ? String.Empty : filter, String.IsNullOrEmpty(categoryCode) ? String.Empty : categoryCode);
+                if (result != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "Ok", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
+
+        public ServiceResult GetChildPositions(Guid itemId, int index, int count, string filter, string categoryCode)
+        {
+            try
+            {
+                var result = _itemRepository.GetChildPositions(itemId, index, count, String.IsNullOrEmpty(filter) ? String.Empty : filter, String.IsNullOrEmpty(categoryCode) ? String.Empty : categoryCode);
+                if (result != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "Ok", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
+
+        public ServiceResult GetItemDetail(Guid itemId)
+        {
+            try
+            {
+                var rs = _itemRepository.GetItemDetail(itemId);
+                if (rs != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "Ok", rs);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", rs);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
+
+        public ServiceResult GetItemNoParent(int index, int count, string filter, string categoryCode, Guid rootId)
+        {
+            try
+            {
+                var result = _itemRepository.GetItemNoParent(index, count, String.IsNullOrEmpty(filter) ? String.Empty : filter, String.IsNullOrEmpty(categoryCode) ? String.Empty : categoryCode, rootId);
+                if (result != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "Ok", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
+
         public ServiceResult GetItems(string filter, ItemStatus? status, int index, int count, string categoryCode)
         {
             try
@@ -35,6 +139,32 @@ namespace InfrastructureManagement.Core.Services
                 else
                 {
                     _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", result);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
+
+        public ServiceResult GetRoot(Guid itemId)
+        {
+            try
+            {
+                var root = _itemRepository.GetRoot(itemId);
+                if(root != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "Ok", root);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", root);
                     _serviceResult.StatusCode = 200;
                     return _serviceResult;
                 }

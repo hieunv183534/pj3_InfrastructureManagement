@@ -12,5 +12,15 @@ namespace InfrastructureManagement.Core.Interfaces.IServices
     public interface IItemService : IBaseService<Item>
     {
         ServiceResult GetItems(string filter, ItemStatus? status, int index, int count, string categoryCode);
+
+        ServiceResult GetChildPositions(Guid itemId, int index, int count, string filter, string categoryCode);
+
+        ServiceResult GetChildAPartOfs(Guid itemId, int index, int count, string filter, string categoryCode);
+
+        ServiceResult GetItemDetail(Guid itemId);
+
+        ServiceResult GetItemNoParent(int index, int count, string filter, string categoryCode, Guid rootId);
+
+        ServiceResult GetRoot(Guid itemId);
     }
 }
