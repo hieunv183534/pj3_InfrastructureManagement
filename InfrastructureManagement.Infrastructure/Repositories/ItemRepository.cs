@@ -151,6 +151,24 @@ namespace InfrastructureManagement.Infrastructure.Repositories
             };
         }
 
+        public object GetParentItem(Guid itemId)
+        {
+            var queery = from map in _databaseContext.MapItems
+                         where map.ItemId == itemId
+                         join parent in _databaseContext.Items
+                         on map.ParentId equals parent.Id
+                         join c in _databaseContext.Categorys
+                         on parent.CategoryId equals c.Id
+                         select new
+                         {
+                             item = parent,
+                             category = c,
+                             relation = map
+                         };
+
+            return queery.FirstOrDefault();
+        }
+
         public Item GetRoot(Guid itemId)
         {
             var thisParentRelation = _databaseContext.MapItems.FirstOrDefault(mi => mi.ItemId == itemId);

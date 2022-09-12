@@ -10,5 +10,7 @@ namespace InfrastructureManagement.Core.Interfaces.IRepositories
     public interface IAccountRepository : IBaseRepository<Account>
     {
         Account GetAccountByUsername(string username);
+
+        Task<object> GetOverView();
     }
 }

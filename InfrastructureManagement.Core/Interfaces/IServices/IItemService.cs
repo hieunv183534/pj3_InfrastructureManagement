@@ -22,5 +22,7 @@ namespace InfrastructureManagement.Core.Interfaces.IServices
         ServiceResult GetItemNoParent(int index, int count, string filter, string categoryCode, Guid rootId);
 
         ServiceResult GetRoot(Guid itemId);
+
+        ServiceResult GetParentItem(Guid itemId);
     }
 }

@@ -105,5 +105,12 @@ namespace InfrastructureManagement.Api.Controllers
             var serviceResult = _itemService.GetRoot(itemId);
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
+
+        [HttpGet("getParentItem/{itemId}")]
+        public IActionResult GetParentItem([FromRoute] Guid itemId)
+        {
+            var serviceResult = _itemService.GetParentItem(itemId);
+            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
+        }
     }
 }

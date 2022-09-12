@@ -47,5 +47,12 @@ namespace InfrastructureManagement.Api.Controllers
             var serviceResult = _tokenAccountService.DeleteTokenByToken(Authorization);
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
+
+        [HttpGet("getOverView")]
+        public async Task<IActionResult> GetOverView()
+        {
+            var serviceResult = await _accountService.GetOverView();
+            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
+        }
     }
 }

@@ -25,5 +25,7 @@ namespace InfrastructureManagement.Core.Entities
         public string Note { get; set; }
 
         public ReportType Type { get; set; }
+
+        public ReportStatus Status { get; set; }
     }
 }

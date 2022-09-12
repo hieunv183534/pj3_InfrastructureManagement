@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace InfrastructureManagement.Core.Enums
 {
-    public enum ItemStatus
+    public enum ReportStatus
     {
-        Using = 1,
-        Broken,
-        UnderMaintenance,
-        Storage,
-        Liquidation
+        New = 1,
+        Confirm,
+        Reject,
+        Doing,
+        Complete
     }
 }

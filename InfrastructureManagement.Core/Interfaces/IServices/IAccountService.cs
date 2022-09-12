@@ -11,5 +11,7 @@ namespace InfrastructureManagement.Core.Interfaces.IServices
     public interface IAccountService : IBaseService<Account>
     {
         ServiceResult GetAccountByUsername(string username);
+
+        Task<ServiceResult> GetOverView();
     }
 }

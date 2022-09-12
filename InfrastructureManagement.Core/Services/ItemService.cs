@@ -151,6 +151,32 @@ namespace InfrastructureManagement.Core.Services
             }
         }
 
+        public ServiceResult GetParentItem(Guid itemId)
+        {
+            try
+            {
+                var parent = _itemRepository.GetParentItem(itemId);
+                if (parent != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "Ok", parent);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "Không có bản ghi nào!", parent);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
+
         public ServiceResult GetRoot(Guid itemId)
         {
             try

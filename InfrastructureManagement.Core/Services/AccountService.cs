@@ -44,5 +44,31 @@ namespace InfrastructureManagement.Core.Services
                 return _serviceResult;
             }
         }
+
+        public async Task<ServiceResult> GetOverView()
+        {
+            try
+            {
+                var overview = await _accountRepository.GetOverView();
+                if (overview != null)
+                {
+                    _serviceResult.Response = new ResponseModel(2000, "OK", overview);
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+                else
+                {
+                    _serviceResult.Response = new ResponseModel(2004, "No data or end of list data");
+                    _serviceResult.StatusCode = 200;
+                    return _serviceResult;
+                }
+            }
+            catch (Exception ex)
+            {
+                _serviceResult.Response = new ResponseModel(9999, "Exception Error", new { msg = ex.Message });
+                _serviceResult.StatusCode = 500;
+                return _serviceResult;
+            }
+        }
     }
 }

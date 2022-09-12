@@ -22,5 +22,7 @@ namespace InfrastructureManagement.Core.Interfaces.IRepositories
 
         Item GetRoot(Guid itemId);
 
+        object GetParentItem(Guid itemId);
+
     }
 }
