@@ -12,6 +12,8 @@ namespace InfrastructureManagement.Core.Interfaces.IRepositories
     {
         object GetItems(string filter, ItemStatus? status, int index, int count, string categoryCode);
 
+        object GetItemsDeleted(string filter, ItemStatus? status, int index, int count, string categoryCode);
+
         object GetChildPositions(Guid itemId, int index, int count, string filter, string categoryCode);
 
         object GetChildAPartOfs(Guid itemId, int index, int count, string filter, string categoryCode);
@@ -23,6 +25,10 @@ namespace InfrastructureManagement.Core.Interfaces.IRepositories
         Item GetRoot(Guid itemId);
 
         object GetParentItem(Guid itemId);
+
+        Item AddItem(Item item);
+
+        int DeleteItem(Guid itemId);
 
     }
 }

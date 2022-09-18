@@ -20,6 +20,7 @@ namespace InfrastructureManagement.Core
             services.AddScoped(typeof(IItemLogService), typeof(ItemLogService));
             services.AddScoped(typeof(ICategoryService), typeof(CategoryService));
             services.AddScoped(typeof(IReportService), typeof(ReportService));
+            services.AddScoped(typeof(IRelationshipService), typeof(RelationshipService));
             return services;
         }
     }

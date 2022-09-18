@@ -16,38 +16,10 @@ namespace InfrastructureManagement.Api.Controllers
             _itemLogService = itemLogService;
         }
 
-        [HttpGet]
-        public IActionResult GetListItem()
+        [HttpGet("{itemId}")]
+        public IActionResult GetLogOfItem([FromRoute] Guid itemId)
         {
-            var serviceResult = _itemLogService.GetAll();
-            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
-        }
-
-        [HttpGet("{id}")]
-        public IActionResult GetById([FromRoute] Guid id)
-        {
-            var serviceResult = _itemLogService.GetById(id);
-            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
-        }
-
-        [HttpPost]
-        public IActionResult Add([FromBody] ItemLog itemLog)
-        {
-            var serviceResult = _itemLogService.Add(itemLog);
-            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
-        }
-
-        [HttpPut]
-        public IActionResult Update([FromBody] ItemLog itemLog)
-        {
-            var serviceResult = _itemLogService.Update(itemLog, itemLog.Id);
-            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
-        }
-
-        [HttpDelete("{id}")]
-        public IActionResult Delete([FromRoute] Guid id)
-        {
-            var serviceResult = _itemLogService.Delete(id);
+            var serviceResult = _itemLogService.GetLogOfItem(itemId);
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
     }

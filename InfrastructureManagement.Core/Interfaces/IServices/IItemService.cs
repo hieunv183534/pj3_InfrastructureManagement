@@ -13,6 +13,8 @@ namespace InfrastructureManagement.Core.Interfaces.IServices
     {
         ServiceResult GetItems(string filter, ItemStatus? status, int index, int count, string categoryCode);
 
+        ServiceResult GetItemsDeleted(string filter, ItemStatus? status, int index, int count, string categoryCode);
+
         ServiceResult GetChildPositions(Guid itemId, int index, int count, string filter, string categoryCode);
 
         ServiceResult GetChildAPartOfs(Guid itemId, int index, int count, string filter, string categoryCode);
@@ -24,5 +26,9 @@ namespace InfrastructureManagement.Core.Interfaces.IServices
         ServiceResult GetRoot(Guid itemId);
 
         ServiceResult GetParentItem(Guid itemId);
+
+        ServiceResult AddItem(Item item);
+
+        ServiceResult UndoDeletedItem(Guid itemId);
     }
 }

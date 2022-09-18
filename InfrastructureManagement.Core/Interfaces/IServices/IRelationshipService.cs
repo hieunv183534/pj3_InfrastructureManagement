@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace InfrastructureManagement.Core.Interfaces.IRepositories
+namespace InfrastructureManagement.Core.Interfaces.IServices
 {
-    public interface IItemLogRepository : IBaseRepository<ItemLog>
+    public interface IRelationshipService : IBaseService<MapItem>
     {
-        List<ItemLog> GetLogOfItem(Guid itemId);
     }
 }

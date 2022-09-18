@@ -46,3 +46,4 @@ C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Ap
 C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Api\bin\Debug\net6.0\InfrastructureManagement.Infrastructure.pdb
 C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Api\bin\Debug\net6.0\MySqlConnector.dll
 C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Api\bin\Debug\net6.0\Pomelo.EntityFrameworkCore.MySql.dll
+C:\Users\Hi\Desktop\pj3\InfrastructureManagement.Api\InfrastructureManagement.Api\bin\Debug\net6.0\Newtonsoft.Json.dll

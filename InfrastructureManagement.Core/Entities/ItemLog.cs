@@ -1,4 +1,5 @@
 ﻿using InfrastructureManagement.Core.Enums;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,9 +16,11 @@ namespace InfrastructureManagement.Core.Entities
         [ForeignKey("ItemId")]
         public Item Item { get; set; }
 
-        public string LogDetail { get; set; }
+        [Column(TypeName = "TEXT")]
+        public string? LogDetail { get; set; }
 
-        public string LogUrl { get; set; }
+        [Column(TypeName = "TEXT")]
+        public string LogData { get; set; }
 
         public ItemLogType Type { get; set; }
     }

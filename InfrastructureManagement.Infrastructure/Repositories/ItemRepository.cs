@@ -15,6 +15,21 @@ namespace InfrastructureManagement.Infrastructure.Repositories
         {
         }
 
+        public Item AddItem(Item item)
+        {
+            _entities.Add(item);
+            int row = _databaseContext.SaveChanges();
+            if (row == 0) return null;
+            return item;
+        }
+
+        public int DeleteItem(Guid itemId)
+        {
+            var item = _entities.Where(i=> i.Id == itemId).FirstOrDefault();
+            item.IsDeleted = true;
+            return _databaseContext.SaveChanges();
+        }
+
         public object GetChildAPartOfs(Guid itemId, int index, int count, string filter, string categoryCode = "")
         {
             var type = RelationshipType.APartOf;
@@ -24,7 +39,8 @@ namespace InfrastructureManagement.Infrastructure.Repositories
                         where (mapItem.RelationshipType == type) &&
                         (mapItem.ParentId == itemId) &&
                         (item.Name.Contains(filter) || item.Code.Contains(filter)) &&
-                        item.CategoryCode.StartsWith(categoryCode)
+                        item.CategoryCode.StartsWith(categoryCode) &&
+                        item.IsDeleted == false
                         select new
                         {
                             code = item.Code,
@@ -53,7 +69,8 @@ namespace InfrastructureManagement.Infrastructure.Repositories
                         where (mapItem.RelationshipType == type) &&
                         (mapItem.ParentId == itemId) &&
                         (item.Name.Contains(filter) || item.Code.Contains(filter)) &&
-                        item.CategoryCode.StartsWith(categoryCode)
+                        item.CategoryCode.StartsWith(categoryCode) &&
+                        item.IsDeleted == false
                         select new
                         {
                             code = item.Code,
@@ -113,8 +130,9 @@ namespace InfrastructureManagement.Infrastructure.Repositories
                         on i.Id equals mi.ItemId into imi
                         from vh in imi.DefaultIfEmpty()
                         where i.Id != rootId &&
+                        i.IsDeleted == false &&
                         i.CategoryCode.StartsWith(categoryCode) &&
-                        ( i.Name.Contains(filter) || i.Code.Contains(filter))
+                        (i.Name.Contains(filter) || i.Code.Contains(filter))
                         select new
                         {
                             code = i.Code,
@@ -140,7 +158,22 @@ namespace InfrastructureManagement.Infrastructure.Repositories
         {
             var query = from item in _databaseContext.Items
                         where (item.Name.Contains(filter) || item.Code.Contains(filter)) &&
-                        item.CategoryCode.StartsWith(categoryCode) &&
+                        item.CategoryCode.StartsWith(categoryCode) && item.IsDeleted == false &&
+                        (status == null || item.Status == status)
+                        select item;
+            List<Item> items = query.ToList();
+            return new
+            {
+                total = items.Count,
+                data = items.Skip(index).Take(count).ToList()
+            };
+        }
+
+        public object GetItemsDeleted(string filter, ItemStatus? status, int index, int count, string categoryCode)
+        {
+            var query = from item in _databaseContext.Items
+                        where (item.Name.Contains(filter) || item.Code.Contains(filter)) &&
+                        item.CategoryCode.StartsWith(categoryCode) && item.IsDeleted == true &&
                         (status == null || item.Status == status)
                         select item;
             List<Item> items = query.ToList();
@@ -173,11 +206,12 @@ namespace InfrastructureManagement.Infrastructure.Repositories
         {
             var thisParentRelation = _databaseContext.MapItems.FirstOrDefault(mi => mi.ItemId == itemId);
 
-            if(thisParentRelation == null) return _databaseContext.Items.FirstOrDefault(i=> i.Id == itemId);
+            if (thisParentRelation == null) return _databaseContext.Items.FirstOrDefault(i => i.Id == itemId);
             else
             {
                 return GetRoot(thisParentRelation.ParentId);
             }
         }
+
     }
 }

@@ -8,8 +8,13 @@ namespace InfrastructureManagement.Core.Enums
 {
     public enum ItemLogType
     {
-        ChangeStatus,
-        ChangeQualityScore,
-        ChangePosition
+        Create,
+        Update,
+        Delete,
+        AddChild,
+        DeleteChild,
+        AddParent,
+        DeleteParent,
+        Restore
     }
 }

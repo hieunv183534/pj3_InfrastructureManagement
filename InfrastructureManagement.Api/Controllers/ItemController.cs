@@ -11,9 +11,9 @@ namespace InfrastructureManagement.Api.Controllers
     public class ItemController : ControllerBase
     {
         private readonly IItemService _itemService;
-        private readonly IBaseService<MapItem> _relationshipService;
+        private readonly IRelationshipService _relationshipService;
 
-        public ItemController(IItemService itemService, IBaseService<MapItem> relationshipService)
+        public ItemController(IItemService itemService, IRelationshipService relationshipService)
         {
             _itemService = itemService;
             _relationshipService = relationshipService;
@@ -30,7 +30,7 @@ namespace InfrastructureManagement.Api.Controllers
         [HttpPost]
         public IActionResult Add([FromBody] Item item)
         {
-            var serviceResult = _itemService.Add(item);
+            var serviceResult = _itemService.AddItem(item);
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
@@ -53,6 +53,20 @@ namespace InfrastructureManagement.Api.Controllers
         public IActionResult GetItems([FromQuery] string? filter, [FromQuery] ItemStatus? status, [FromQuery] int index, [FromQuery] int count, [FromQuery] string? categoryCode)
         {
             var serviceResult = _itemService.GetItems(filter, status, index, count, categoryCode);
+            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
+        }
+
+        [HttpGet("deleted")]
+        public IActionResult GetItemsDeleted([FromQuery] string? filter, [FromQuery] ItemStatus? status, [FromQuery] int index, [FromQuery] int count, [FromQuery] string? categoryCode)
+        {
+            var serviceResult = _itemService.GetItemsDeleted(filter, status, index, count, categoryCode);
+            return StatusCode(serviceResult.StatusCode, serviceResult.Response);
+        }
+
+        [HttpGet("undoDeleted/{itemId}")]
+        public IActionResult UndoDeletedItem([FromRoute] Guid itemId)
+        {
+            var serviceResult = _itemService.UndoDeletedItem(itemId);
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
@@ -80,7 +94,6 @@ namespace InfrastructureManagement.Api.Controllers
         [HttpDelete("deleteRelationship/{id}")]
         public IActionResult DeleteRelationship([FromRoute] Guid id)
         {
-
             var serviceResult = _relationshipService.Delete(id);
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }

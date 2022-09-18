@@ -37,7 +37,7 @@ namespace InfrastructureManagement.Core.Services
             }
         }
 
-        public ServiceResult Delete(Guid id)
+        public virtual ServiceResult Delete(Guid id)
         {
             try
             {

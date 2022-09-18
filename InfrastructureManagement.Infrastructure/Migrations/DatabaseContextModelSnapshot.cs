@@ -120,6 +120,9 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<int?>("MinScore")
                         .HasColumnType("int");
 
@@ -164,13 +167,12 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                     b.Property<Guid>("ItemId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("LogDetail")
+                    b.Property<string>("LogData")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("LogUrl")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<string>("LogDetail")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime(6)");

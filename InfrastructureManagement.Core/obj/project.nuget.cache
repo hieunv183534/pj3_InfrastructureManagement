@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "FpBjoqAsMKuilX7+ChgCEz8feodR56Vim0kR2SNM574bXy8gUSCx8hsuILvLMdkDxkJlIh3pXPteMDcwbHrR6w==",
+  "dgSpecHash": "4M1Qz4J7YEDGvcQgge66KEMUzcefAJ7WcysjYaT6YQrxeVFgCfTHqLwhHNQJkaFttwk/SPcjJ4bT66xs87aWHg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hi\\Desktop\\pj3\\InfrastructureManagement.Api\\InfrastructureManagement.Core\\InfrastructureManagement.Core.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Hi\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512"
+    "C:\\Users\\Hi\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Hi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],
   "logs": []
 }

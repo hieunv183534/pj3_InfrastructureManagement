@@ -32,5 +32,7 @@ namespace InfrastructureManagement.Core.Entities
         public Category? Category { get; set; }
 
         public ItemStatus Status { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

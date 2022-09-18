@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfrastructureManagement.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20220906160901_init20")]
-    partial class init20
+    [Migration("20220917021842_init26")]
+    partial class init26
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -113,7 +113,6 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<Guid?>("CategoryId")
-                        .IsRequired()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Code")
@@ -122,6 +121,9 @@ namespace InfrastructureManagement.Infrastructure.Migrations
 
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("tinyint(1)");
 
                     b.Property<int?>("MinScore")
                         .HasColumnType("int");
@@ -167,13 +169,12 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                     b.Property<Guid>("ItemId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("LogDetail")
+                    b.Property<string>("LogData")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasColumnType("TEXT");
 
-                    b.Property<string>("LogUrl")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<string>("LogDetail")
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime(6)");
@@ -247,6 +248,9 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int>("Type")
                         .HasColumnType("int");
 
@@ -288,9 +292,7 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                 {
                     b.HasOne("InfrastructureManagement.Core.Entities.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.Navigation("Category");
                 });

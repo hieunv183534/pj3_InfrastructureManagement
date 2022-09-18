@@ -19,6 +19,7 @@ namespace InfrastructureManagement.Core.Services
             _accountRepository = accountRepository;
         }
 
+
         public ServiceResult GetAccountByUsername(string username)
         {
             try

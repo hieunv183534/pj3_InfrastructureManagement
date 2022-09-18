@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Pv0KiIUVcTmiVRDt9ywMD/IJ+PS7+oykwwW4NPlFBGXcVkCXr9adt6I7WudNyt6rgCehTg+c3vnmFUgloTFp4Q==",
+  "dgSpecHash": "osQ4EUfu7vyygaJC9J3jDyisPtqpej5ncRjnCdRFfDNjQbkWa9zn85d6fud0BgsvoXuQoziCz2MasdWQSbgm5Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hi\\Desktop\\pj3\\InfrastructureManagement.Api\\InfrastructureManagement.Infrastructure\\InfrastructureManagement.Infrastructure.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\mysqlconnector\\2.1.2\\mysqlconnector.2.1.2.nupkg.sha512",
+    "C:\\Users\\Hi\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.2\\pomelo.entityframeworkcore.mysql.6.0.2.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\Hi\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",

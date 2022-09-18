@@ -11,6 +11,8 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.UseUrls("http://*:" + Environment.GetEnvironmentVariable("PORT"));
+
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 
@@ -24,15 +26,6 @@ builder.Services.AddControllers();
 builder.Services.AddScoped(typeof(IJwtAuthenticationManager), typeof(JwtAuthenticationManager));
 
 builder.Services.AddTransient<CustomBearer>();
-
-//builder.Services.AddDbContext<DatabaseContext>(options =>
-//{
-//    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlDev"));
-//});
-
-//builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
-//builder.Services.AddScoped(typeof(IAccountRepository), typeof(AccountRepository));
-//builder.Services.AddScoped(typeof(ITokenAccountRepository), typeof(TokenAccountRepository));
 
 //builder.Services.AddAuthentication(x =>
 //{
