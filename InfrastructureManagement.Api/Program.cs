@@ -7,6 +7,7 @@ using InfrastructureManagement.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,23 +28,23 @@ builder.Services.AddScoped(typeof(IJwtAuthenticationManager), typeof(JwtAuthenti
 
 builder.Services.AddTransient<CustomBearer>();
 
-//builder.Services.AddAuthentication(x =>
-//{
-//    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//}).AddJwtBearer(x =>
-//{
-//    x.RequireHttpsMetadata = false;
-//    x.SaveToken = true;
-//    x.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetConnectionString("Key"))),
-//        ValidateIssuer = false,
-//        ValidateAudience = false
-//    };
-//    x.EventsType = typeof(CustomBearer);
-//});
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.RequireHttpsMetadata = false;
+    x.SaveToken = true;
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(builder.Configuration.GetConnectionString("Key"))),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
+    x.EventsType = typeof(CustomBearer);
+});
 
 
 
@@ -58,26 +59,52 @@ builder.Services.AddCors(options => options.AddPolicy("CorsPolicy",
 
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    var securityScheme = new OpenApiSecurityScheme()
+    {
+        Name = "JWT Authentication",
+        Description = "Enter a valid jwt bearer token",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT",
+        Reference = new OpenApiReference()
+        {
+            Id = JwtBearerDefaults.AuthenticationScheme,
+            Type = ReferenceType.SecurityScheme
+        }
+
+    };
+    options.AddSecurityDefinition(securityScheme.Reference.Id, securityScheme);
+    options.AddSecurityRequirement(new OpenApiSecurityRequirement()
+        {
+            {securityScheme , new string[] {}}
+        }
+    );
+});
 
 builder.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 var app = builder.Build();
 
+app.UseSwagger();
+app.UseSwaggerUI();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseRouting();
 
 app.UseCors("CorsPolicy");
 
-//app.UseAuthentication();
+app.UseAuthentication();
 
 app.UseAuthorization();
 

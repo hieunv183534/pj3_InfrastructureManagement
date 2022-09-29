@@ -1,11 +1,13 @@
 ﻿using InfrastructureManagement.Core.Entities;
 using InfrastructureManagement.Core.Enums;
 using InfrastructureManagement.Core.Interfaces.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InfrastructureManagement.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ItemController : ControllerBase
@@ -19,7 +21,7 @@ namespace InfrastructureManagement.Api.Controllers
             _relationshipService = relationshipService;
         }
 
-
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] Guid id)
         {
@@ -27,6 +29,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpPost]
         public IActionResult Add([FromBody] Item item)
         {
@@ -34,6 +37,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpPut]
         public IActionResult Update([FromBody] Item item)
         {
@@ -41,6 +45,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] Guid id)
         {
@@ -49,6 +54,7 @@ namespace InfrastructureManagement.Api.Controllers
         }
 
 
+        [Authorize]
         [HttpGet]
         public IActionResult GetItems([FromQuery] string? filter, [FromQuery] ItemStatus? status, [FromQuery] int index, [FromQuery] int count, [FromQuery] string? categoryCode)
         {
@@ -56,6 +62,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpGet("deleted")]
         public IActionResult GetItemsDeleted([FromQuery] string? filter, [FromQuery] ItemStatus? status, [FromQuery] int index, [FromQuery] int count, [FromQuery] string? categoryCode)
         {
@@ -63,6 +70,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpGet("undoDeleted/{itemId}")]
         public IActionResult UndoDeletedItem([FromRoute] Guid itemId)
         {
@@ -70,6 +78,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("getChildPositions/{itemId}")]
         public IActionResult GetChildPositions([FromRoute] Guid itemId, [FromQuery] int index, [FromQuery] int count, [FromQuery] string? filter, [FromQuery] string? categoryCode)
         {
@@ -77,6 +86,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("getChildAPartOfs/{itemId}")]
         public IActionResult GetChildAPartOfs([FromRoute] Guid itemId, [FromQuery] int index, [FromQuery] int count, [FromQuery] string? filter, [FromQuery] string? categoryCode)
         {
@@ -84,6 +94,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize]
         [HttpGet("getItemDetail/{itemId}")]
         public IActionResult GetItemDetail(Guid itemId)
         {
@@ -91,6 +102,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("deleteRelationship/{id}")]
         public IActionResult DeleteRelationship([FromRoute] Guid id)
         {
@@ -98,6 +110,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPost("addRelationship")]
         public IActionResult AddRelationship([FromBody] MapItem relationship)
         {
@@ -105,6 +118,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("getItemNoParent")]
         public IActionResult GetItemNoParent([FromQuery] int index, [FromQuery] int count, [FromQuery] string? filter, [FromQuery] string? categoryCode, [FromQuery] Guid rootId)
         {
@@ -112,6 +126,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("getRoot/{itemId}")]
         public IActionResult GetRoot([FromRoute] Guid itemId)
         {
@@ -119,6 +134,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpGet("getParentItem/{itemId}")]
         public IActionResult GetParentItem([FromRoute] Guid itemId)
         {

@@ -13,19 +13,30 @@ namespace InfrastructureManagement.Core.Entities
         public Guid PositionId { get; set; }
 
         [ForeignKey("PositionId")]
-        public Item PositionItem { get; set; }
+        public Item? PositionItem { get; set; }
 
-        public string PositionString { get; set; }
+        public string? PositionString { get; set; }
 
-        public Guid ItemId { get; set; }
+        public int? Quantity { get; set; }
 
-        [ForeignKey("ItemId")]
-        public Item Item { get; set; }
+        public Guid? CategoryId { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category? Category { get; set; }
+
+        public Guid? ReporterId { get; set; }
+
+        [ForeignKey("ReporterId")]
+        public Account? Reporter { get; set; }
 
         public string Note { get; set; }
 
-        public ReportType Type { get; set; }
+        public string? Reply { get; set; }
 
-        public ReportStatus Status { get; set; }
+        public ReportType? Type { get; set; }
+
+        public ReportStatus? Status { get; set; }
+
+        public string? Urls { get; set; }
     }
 }

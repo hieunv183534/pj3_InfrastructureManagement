@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "inCrnZfzCtkOdaC1GJtzmBknTXZzf9LW5UisYZPbNGw=",
+  "Hash": "qtzjnyU9OBZUEPonHGKganwnhY2d1WLQmCAw2UVD/Wo=",
   "Source": "InfrastructureManagement.Api",
   "BasePath": "_content/InfrastructureManagement.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "InfrastructureManagement.Api\\wwwroot",
+      "Source": "InfrastructureManagement.Api",
+      "ContentRoot": "C:\\Users\\Hi\\Desktop\\pj3\\InfrastructureManagement.Api\\InfrastructureManagement.Api\\wwwroot\\",
+      "BasePath": "_content/InfrastructureManagement.Api",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

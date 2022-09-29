@@ -226,11 +226,11 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<Guid?>("CategoryId")
+                        .HasColumnType("char(36)");
+
                     b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime(6)");
-
-                    b.Property<Guid>("ItemId")
-                        .HasColumnType("char(36)");
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime(6)");
@@ -243,20 +243,33 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<string>("PositionString")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<int>("Status")
+                    b.Property<int?>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("Type")
+                    b.Property<string>("Reply")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid?>("ReporterId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int?>("Status")
                         .HasColumnType("int");
+
+                    b.Property<int?>("Type")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Urls")
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ItemId");
+                    b.HasIndex("CategoryId");
 
                     b.HasIndex("PositionId");
+
+                    b.HasIndex("ReporterId");
 
                     b.ToTable("Reports");
                 });
@@ -327,11 +340,9 @@ namespace InfrastructureManagement.Infrastructure.Migrations
 
             modelBuilder.Entity("InfrastructureManagement.Core.Entities.Report", b =>
                 {
-                    b.HasOne("InfrastructureManagement.Core.Entities.Item", "Item")
+                    b.HasOne("InfrastructureManagement.Core.Entities.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("InfrastructureManagement.Core.Entities.Item", "PositionItem")
                         .WithMany()
@@ -339,9 +350,15 @@ namespace InfrastructureManagement.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Item");
+                    b.HasOne("InfrastructureManagement.Core.Entities.Account", "Reporter")
+                        .WithMany()
+                        .HasForeignKey("ReporterId");
+
+                    b.Navigation("Category");
 
                     b.Navigation("PositionItem");
+
+                    b.Navigation("Reporter");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,10 +1,12 @@
 ﻿using InfrastructureManagement.Core.Entities;
 using InfrastructureManagement.Core.Interfaces.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InfrastructureManagement.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
@@ -16,6 +18,7 @@ namespace InfrastructureManagement.Api.Controllers
             _categoryService = categoryService;
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult GetListItem()
         {
@@ -23,6 +26,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] Guid id)
         {
@@ -30,6 +34,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpPost]
         public IActionResult Add([FromBody] Category category)
         {
@@ -37,6 +42,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpPut]
         public IActionResult Update([FromBody] Category category)
         {
@@ -44,6 +50,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] Guid id)
         {
@@ -51,6 +58,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles = "admin")]
         [HttpDelete]
         public IActionResult DeleteCategoryTree([FromQuery] string categoryCode)
         {

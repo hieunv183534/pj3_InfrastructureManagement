@@ -2,6 +2,7 @@
 using InfrastructureManagement.Core.Dtos;
 using InfrastructureManagement.Core.Entities;
 using InfrastructureManagement.Core.Interfaces.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace InfrastructureManagement.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AccountController : ControllerBase
     {
         protected ITokenAccountService _tokenAccountService;
@@ -22,6 +24,7 @@ namespace InfrastructureManagement.Api.Controllers
             _tokenAccountService = tokenAccountService;
         }
 
+        [AllowAnonymous]
         [HttpPost("signup")]
         public IActionResult SignUp([FromBody] Account account)
         {
@@ -30,6 +33,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public IActionResult Login([FromBody] Account account)
         {
@@ -48,6 +52,7 @@ namespace InfrastructureManagement.Api.Controllers
             return StatusCode(serviceResult.StatusCode, serviceResult.Response);
         }
 
+        [Authorize(Roles ="admin")]
         [HttpGet("getOverView")]
         public async Task<IActionResult> GetOverView()
         {
